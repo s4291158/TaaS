@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block body-class %}
+    class="add"
+{% endblock %}
+
+{% block content %}
+    <section id="add-section">
+        <div class="container">
+            <form method="post" action="{% url 'troll:add' %}">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 col-sm-12">
+                        <div class="container-fluid">
+                            {% if form.non_field_errors %}
+                                <p class="error-message">{{ form.non_field_errors.as_text }}</p>
+                            {% endif %}
+                        </div>
+
+                        {% include 'form-field.html' with field=form.idea_name label='before' class='col-sm-12' %}
+                        {% include 'form-field.html' with field=form.idea_description label='before' class='col-sm-12' %}
+                        {% include 'form-field.html' with field=form.email label='before' class='col-sm-12' %}
+
+                        <div class="add-submit container-fluid">
+                            <div class="col-sm-12 form-group">
+                                <button class="btn btn-success btn-block" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}

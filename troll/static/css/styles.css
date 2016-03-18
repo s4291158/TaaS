@@ -1,0 +1,12 @@
+@media (min-width: 767px) {
+  section {
+    margin-top: 90px; } }
+section#idea-section .idea {
+  margin-bottom: 20px; }
+section#add-section .add-submit {
+  margin-top: 20px; }
+
+.error-message {
+  color: #a94442; }
+
+/*# sourceMappingURL=styles.css.map */

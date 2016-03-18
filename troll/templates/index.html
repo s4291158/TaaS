@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block body-class %}
+    class="index"
+{% endblock %}
+
+{% block content %}
+    <section id="idea-section">
+        <div class="container">
+            <div class="row">
+                <div class="container-fluid text-center">
+                    {% if messages %}
+                        <div class="messages">
+                            {% for message in messages %}
+                                <div{% if 'success' in message.tags %} class="{{ message.tags }}"{% endif %}>
+                                    <p class="error-message">{{ message }}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                {% for idea in ideas %}
+                    <div class="idea container-fluid text-center">
+                        <div class="col-sm-12">
+                            <h2>{{ idea.name }}</h2>
+                        </div>
+                        <div class="col-sm-12">
+                            <p>{{ idea.description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                <div class="container-fluid text-center">
+                    <a href="{% url 'troll:add' %}">Add</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
