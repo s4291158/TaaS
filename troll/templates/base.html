@@ -1,0 +1,30 @@
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+
+
+    {% include 'css.html' %}
+    {% block custom-css %}{% endblock %}
+
+</head>
+
+
+<body {% block body-class %}{% endblock %}>
+
+{% block nav %}{% endblock %}
+
+{% block content %}{% endblock %}
+
+{% include 'js.html' %}
+
+
+</body>
+
+</html>
