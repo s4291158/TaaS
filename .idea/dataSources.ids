@@ -113,21 +113,26 @@
       <column name="email" sqlType="VARCHAR(254)" precision="0" scale="-1" nullable="true" jdbcType="12"/>
       <column name="valid" sqlType="BOOL" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="likes" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
-      <column name="user_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="session_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <primary-key columns="id"/>
-      <foreign-key name="#FAKE_troll_idea_1" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <index name="troll_idea_e8701ad4" unique="true" columns="user_id"/>
+      <foreign-key name="#FAKE_troll_idea_1" columns="session_id" ref-table="troll_session" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="troll_idea_7fc8ef54" unique="true" columns="session_id"/>
     </table>
     <table name="troll_like" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="liked" sqlType="BOOL" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="idea_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
-      <column name="user_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="session_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <primary-key columns="id"/>
-      <foreign-key name="#FAKE_troll_like_1" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_troll_like_1" columns="session_id" ref-table="troll_session" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
       <foreign-key name="#FAKE_troll_like_2" columns="idea_id" ref-table="troll_idea" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <index name="troll_like_e8701ad4" unique="true" columns="user_id"/>
+      <index name="troll_like_7fc8ef54" unique="true" columns="session_id"/>
       <index name="troll_like_3491610b" unique="true" columns="idea_id"/>
+    </table>
+    <table name="troll_session" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="key" sqlType="VARCHAR(40)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
     </table>
   </data-source>
   <data-source name="Django default2" uuid="678d2b0c-ce02-48c1-9503-661f30e7264a">

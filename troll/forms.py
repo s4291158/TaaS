@@ -23,7 +23,7 @@ class IdeaForm(forms.Form):
         )
 
         self.fields['idea_description'] = forms.CharField(
-            label='Ok so what is the troll',
+            label='Ok how does it work',
             error_messages={
                 'required': "you're trolling me right?"
             },
@@ -55,7 +55,7 @@ class IdeaForm(forms.Form):
             self.add_error('idea_name', 'Try a different name perhaps')
 
         ideas_by_same_user = Idea.objects.filter(session=self.session)
-        if len(ideas_by_same_user) > 3:
+        if len(ideas_by_same_user) > 20:
             raise forms.ValidationError("Slow down turbo, how many trolls do you have?")
 
         return cleaned_data

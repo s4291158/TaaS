@@ -50,14 +50,13 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'mt.urls'
+ROOT_URLCONF = 'TaaS.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'troll/templates'),
-            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'frontend/templates'),
         ],
 
         'APP_DIRS': True,
@@ -72,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'mt.wsgi.application'
+WSGI_APPLICATION = 'TaaS.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
@@ -119,3 +118,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'frontend/static'),
+)
