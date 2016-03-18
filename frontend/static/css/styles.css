@@ -9,4 +9,7 @@ section#add-section .add-submit {
 .error-message {
   color: #a94442; }
 
+.liked {
+  color: orange !important; }
+
 /*# sourceMappingURL=styles.css.map */

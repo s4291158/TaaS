@@ -3,6 +3,39 @@ from django import forms
 from .models import *
 
 
+class LikeForm(forms.Form):
+    def __init__(self, sessionkey, idea_id=None, *args, **kwargs):
+        super(LikeForm, self).__init__(*args, **kwargs)
+        self.session = Session.objects.get_or_create(key=sessionkey)[0]
+        try:
+            self.idea = Idea.objects.get(id=idea_id)
+        except Idea.DoesNotExist:
+            self.idea = None
+
+        self.fields['idea_id'] = forms.IntegerField(
+            widget=forms.NumberInput(
+                attrs={'type': 'hidden'}
+            )
+        )
+
+    def save(self):
+        self.session.save()
+
+        if self.idea:
+            like, is_new = Like.objects.get_or_create(idea=self.idea, session=self.session)
+
+            if not is_new and like.liked:
+                like.liked = False
+                like.save()
+                self.idea.likes -= 1
+            else:
+                like.liked = True
+                like.save()
+                self.idea.likes += 1
+
+            self.idea.save()
+
+
 class IdeaForm(forms.Form):
     def __init__(self, sessionkey, *args, **kwargs):
         super(IdeaForm, self).__init__(*args, **kwargs)
