@@ -2,5 +2,5 @@
 .idea/*
 *.pyc
 db.sqlite3
-tracking.html
-settings.py
+.frontend/templates/tracking.html
+.TaaS/settings.py
