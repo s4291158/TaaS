@@ -4,3 +4,4 @@
 .db.sqlite3
 .frontend/templates/tracking.html
 .TaaS/settings.py
+.static/*
