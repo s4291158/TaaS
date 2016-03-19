@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'troll',
 ]
 
-
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -58,6 +57,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'frontend/templates'),
+            os.path.join(BASE_DIR, 'templates'),
         ],
 
         'APP_DIRS': True,
@@ -120,5 +120,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'frontend/static'),
+)
+STATIC_ROOT = (
     os.path.join(BASE_DIR, 'frontend/static'),
 )
