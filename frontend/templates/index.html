@@ -7,6 +7,22 @@
 {% endblock %}
 
 {% block content %}
+{#    <nav>#}
+{#        <ul>#}
+{#            <li><a href="#">Home</a></li>#}
+{#            <li><a href="#">Shop</a></li>#}
+{#            <li><a href="#">About</a></li>#}
+{#            <li><a href="#">Stuff</a></li>#}
+{#        </ul>#}
+{#        </nav>#}
+    <header>
+        <div>
+            <h1>Get back at your mates: Request a troll and we'll make it happen.</h1>
+            <a href="#request" class="button">Troll now</a>
+            <h3>Or <a href="#recommended">browse existing trolls</a> for on-demand mayhem.</h3>
+        </div>
+    </header>
+
     <section id="idea-section">
         <div class="container">
             <div class="row">
@@ -22,9 +38,58 @@
                     {% endif %}
                 </div>
 
-                {% for idea, already_liked in ideas_tuple %}
+                <section id="recommended" class="container" >
+                    <h1>Some great trolls for your troll-y.</h1>
+
+                <div class="col-sm-4">
                     <div class="idea container-fluid text-center">
-                        <div class="col-sm-12">
+
+                            <div id="idea-image">
+                                <img src="../static/img/img1.jpg">
+                            </div>
+                            <h2>Back of Dicks</h2>
+                            <p>This bag of gummy penises is a great way to tell someone to'EAT A BAG OF DICKS'. Sent anonymously with a stock message, this product will get your point across in a way that nobody will mistake. </p>
+                            <a href="http://dicksbymail.com/" class="button">Yummy</a>
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                    <div class="idea container-fluid text-center">
+
+                            <div id="idea-image">
+                                <img src="../static/img/img2.jpg">
+                            </div>
+                            <h2>Glitter Bomb</h2>
+                            <p>Prank your Friends and Enemies for only $9.99? Let us send them some stupid glitter that is guaranteed to go everywhere. 100% Anonymous.</p>
+                            <a href="https://shipyourenemiesglitter.com/" class="button">Ruthless</a>
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                    <div class="idea container-fluid text-center">
+
+                            <div id="idea-image">
+                                <img src="../static/img/img3.jpg">
+                            </div>
+                            <h2>Penis Drawing</h2>
+                            <p>Sending a beautifully crafted, Limited Edition Hand-Drawn Penis on Cardboard as a gift is the best way to show someone how much they mean to you.</p>
+                            <a href="http://www.sendyourfriendapenisdrawing.com/" class="button">NSFW</a>
+
+                        </div>
+                    </div>
+                </section>
+                </section>
+
+                <section id="shop">
+                {% for idea, already_liked in ideas_tuple %}
+                    <div class="col-sm-4">
+                        <div class="idea container-fluid text-center">
+
+                            <div id="idea-image">
+
+                            </div>
                             <h2>
                                 {{ idea.name }}
 
@@ -35,16 +100,17 @@
 
                                 </a>
                             </h2>
-                        </div>
-                        <div class="col-sm-12">
                             <p>{{ idea.description }}</p>
                         </div>
                     </div>
-                {% endfor %}
 
-                <div class="container-fluid text-center">
-                    <a href="{% url 'troll:add' %}">Add</a>
-                </div>
+                {% endfor %}
+                </section>
+
+                <section id="request" class="container-fluid text-center">
+                    <h3>Request some mischief for our minions to make.</h3>
+                    <a href="{% url 'troll:add' %}" class="button">Request</a>
+                </section>
 
             </div>
         </div>
@@ -53,6 +119,11 @@
         {% csrf_token %}
         {{ likeform.idea_id }}
     </form>
+
+    <footer>
+    <h3>Happy trolling.</h3>
+    </footer>
+
     <script type="text/javascript">
         $('.like-btn').click(function (e) {
             e.preventDefault();
