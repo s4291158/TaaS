@@ -1,0 +1,110 @@
+section#shop {
+  display: none; }
+
+body {
+  font-family: "Kadwa", serif; }
+
+header {
+  background-color: #333333;
+  width: 100%;
+  height: 500px;
+  color: white;
+  display: table; }
+  header h1 {
+    margin-bottom: 40px; }
+  header h3 {
+    margin-top: 40px; }
+  header div {
+    background-color: #FF2E19;
+    width: 50%;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle; }
+  header a {
+    text-decoration: underline;
+    color: white; }
+  header a:hover {
+    color: #00FF75; }
+
+nav {
+  background-color: white;
+  padding: 20px;
+  font-weight: bold; }
+  nav li {
+    display: inline;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-transform: uppercase; }
+    nav li a {
+      color: #555; }
+
+a.button {
+  text-decoration: none;
+  border: 5px solid white;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
+  display: block;
+  max-width: 400px;
+  margin: auto; }
+
+a.button:hover {
+  text-decoration: none;
+  background-color: white;
+  color: #FF2E19; }
+
+#idea-image {
+  width: 100%;
+  max-height: 250px;
+  overflow: hidden; }
+
+section#recommended {
+  margin-top: 0px; }
+  section#recommended h1 {
+    margin-bottom: 60px;
+    text-align: center; }
+  section#recommended a.button {
+    color: #B21000;
+    font-size: 18px;
+    border: 3px solid #B21000;
+    max-width: 180px;
+    margin-top: 20px; }
+  section#recommended a.button:hover {
+    color: white;
+    background-color: #B21000; }
+
+@media (min-width: 767px) {
+  section {
+    margin-top: 90px; } }
+
+section#request {
+  background-color: #FF2E19;
+  padding: 40px;
+  color: white;
+  padding-bottom: 60px; }
+  section#request h3 {
+    margin-bottom: 20px; }
+  section#request#idea-section .idea {
+    margin-bottom: 20px; }
+  section#request#add-section .add-submit {
+    margin-top: 20px; }
+
+footer {
+  background-color: #B21000;
+  padding: 40px;
+  text-align: center;
+  color: white; }
+
+.error-message {
+  color: #a94442; }
+
+#like-form {
+  margin: 0;
+  height: 0; }
+
+.liked {
+  color: orange !important; }
+
+/*# sourceMappingURL=styles.css.map */
