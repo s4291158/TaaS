@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block body-class %}
+    class="index"
+{% endblock %}
+
+{% block content %}
+    <section id="idea-section">
+        <div class="container">
+            <div class="row">
+                <div class="container-fluid text-center">
+                    {% if messages %}
+                        <div class="messages">
+                            {% for message in messages %}
+                                <div{% if 'success' in message.tags %} class="{{ message.tags }}"{% endif %}>
+                                    <p class="error-message">{{ message }}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                {% for idea, already_liked in ideas_tuple %}
+                    <div class="idea container-fluid text-center">
+                        <div class="col-sm-12">
+                            <h2>
+                                {{ idea.name }}
+
+                                <a id="like-btn-{{ idea.id }}" href="#"
+                                   class="like-btn {% if already_liked %}liked{% endif %}">
+                                    <span id="like-btn-{{ idea.id }}-span"
+                                          class="glyphicon glyphicon-thumbs-up">{{ idea.likes }}</span>
+
+                                </a>
+                            </h2>
+                        </div>
+                        <div class="col-sm-12">
+                            <p>{{ idea.description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                <div class="container-fluid text-center">
+                    <a href="{% url 'troll:add' %}">Add</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <form id="like-form" action="{% url 'troll:index' %}" method="POST">
+        {% csrf_token %}
+        {{ likeform.idea_id }}
+    </form>
+    <script type="text/javascript">
+        $('.like-btn').click(function (e) {
+            e.preventDefault();
+            var idea_id = this.id.substring(9);
+            //assign idea_id using like-btn id
+            var idea_id_dom = $('#{{ likeform.idea_id.id_for_label }}');
+            idea_id_dom.val(idea_id);
+            //toggle like button class
+            var span_dom = $('#' + this.id + '-span');
+            if (this.classList.contains('liked')) {
+                span_dom.text(parseInt(span_dom.text()) - 1);
+            } else {
+                span_dom.text(parseInt(span_dom.text()) + 1);
+            }
+            $(this).toggleClass('liked');
+            //ajax post
+            var form = $('#like-form');
+            $.post(form.attr('action'), form.serialize(), function () {
+            })
+        })
+    </script>
+
+{% endblock %}
