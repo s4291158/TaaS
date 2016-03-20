@@ -52,6 +52,7 @@ def add(request):
     context["form"] = form
     return render(request, 'add.html', context)
 
+
 def vote(request):
     context = {}
 
@@ -78,4 +79,5 @@ def vote(request):
 
     likeform = LikeForm(sessionkey=request.session.session_key)
     context['likeform'] = likeform
+
     return render(request, 'vote.html', context)

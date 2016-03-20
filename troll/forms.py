@@ -83,15 +83,19 @@ class IdeaForm(forms.Form):
     def clean(self):
         cleaned_data = super(IdeaForm, self).clean()
 
-        ideas_with_same_name = Idea.objects.filter(name=cleaned_data['idea_name'])
-        if len(ideas_with_same_name):
-            self.add_error('idea_name', 'Try a different name perhaps')
-
         ideas_by_same_user = Idea.objects.filter(session=self.session)
         if len(ideas_by_same_user) > 20:
             raise forms.ValidationError("Slow down turbo, how many trolls do you have?")
 
         return cleaned_data
+
+    def clean_idea_name(self):
+        idea_name = self.cleaned_data['idea_name']
+        ideas_with_same_name = Idea.objects.filter(name=idea_name)
+        if len(ideas_with_same_name):
+            raise forms.ValidationError('Try a different name perhaps')
+
+        return idea_name
 
     def save(self):
         idea = Idea()
