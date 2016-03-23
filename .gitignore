@@ -1,5 +1,5 @@
 .idea/
 *.pyc
-troll/settings.py
+TaaS/settings.py
 db.sqlite3
 templates/tracking.html
