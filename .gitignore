@@ -2,3 +2,4 @@
 *.pyc
 troll/settings.py
 db.sqlite3
+templates/tracking.html
